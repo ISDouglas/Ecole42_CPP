@@ -17,7 +17,6 @@ SRC     	= $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.cpp))
 OBJS 		= $(SRC:.cpp=.o)
 
 # Include and Flags
-INCLUDE 	= -Iincludes
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 CC 			= c++
 
@@ -29,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(YELLOW) 🛠️  waiting for compilation...$(RESET)"
-	@$(CC) $(OBJS) -o $(NAME) $(INCLUDE) $(CFLAGS)
+	@$(CC) $(OBJS) -o $(NAME) $(CFLAGS)
 	@echo "$(GREEN) 🤖  Compiled successful ✴️  $(NAME) ✴️$(RESET)"
 	
 # Clean

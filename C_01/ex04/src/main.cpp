@@ -7,12 +7,18 @@ inline void	openerror(std::string file)
 	exit(1);
 }
 
-static void	replace(std::ifstream& in, std::string& sr, std::string& re, std::ofstream& out)
+static void	replace(std::ifstream& in, const std::string& sr, const std::string& re, std::ofstream& out)
 {
 	std::string line;
 	while (std::getline(in, line))
 	{
-
+		std::string	new_string;
+		std::size_t pos = 0;
+		std::size_t start = 0;
+		while ((pos = line.find(sr, pos)) != std::string::npos)
+		{
+			
+		}
 	}
 
 }
@@ -52,7 +58,7 @@ int main(int ac, char   *av[])
 	std::ofstream outfile(filename);
 	if (!outfile.is_open())
 		openerror(filename);
-	replace(infile, av[2], av[3]);
+	replace(infile, std::string(av[2]), std::string(av[3]), outfile);
 	infile.close();
 	return 0;
 }
