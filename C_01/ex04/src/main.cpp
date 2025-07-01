@@ -12,43 +12,25 @@ static void	replace(std::ifstream& in, const std::string& sr, const std::string&
 	std::string line;
 	while (std::getline(in, line))
 	{
-		std::string	new_string;
+		std::string	newLine;
 		std::size_t pos = 0;
 		std::size_t start = 0;
-		while ((pos = line.find(sr, pos)) != std::string::npos)
+		while ((pos = line.find(sr, start)) != std::string::npos)
 		{
-			
+			newLine += line.substr(start, pos - start);
+			newLine += re;
+			start = pos + sr.length();
 		}
+		newLine += line.substr(start);
+		out << newLine << "\n";
 	}
-
 }
-
-/* static void replace(std::ifstream& infile, const std::string& s1, const std::string& s2, const std::string& filename)
-{
-	std::ofstream outfile(filename + ".replace");
-	if (!outfile.is_open())
-		openerror((filename + ".replace").c_str());
-
-	std::string line;
-	while (std::getline(infile, line))
-	{
-		size_t pos = 0;
-		while ((pos = line.find(s1, pos)) != std::string::npos)
-		{
-			line.erase(pos, s1.length());   // 删掉原字符串
-			line.insert(pos, s2);           // 插入新字符串
-			pos += s2.length();             // 移动位置，避免死循环
-		}
-		outfile << line << std::endl;
-	}
-	outfile.close();
-} */
 
 int main(int ac, char   *av[])
 {
 	if (ac != 4)
 	{
-		std::cout << "Raplace exemple: ./replace Makefile RESET  ++++" << std::endl;
+		std::cout << "Replace exemple: ./replace Makefile RESET  ++++" << std::endl;
 		return 1;
 	}
 	std::ifstream infile(av[1]);
@@ -57,8 +39,12 @@ int main(int ac, char   *av[])
 	std::string filename = std::string(av[1]) + ".replace";
 	std::ofstream outfile(filename);
 	if (!outfile.is_open())
+	{
+		infile.close();
 		openerror(filename);
+	}
 	replace(infile, std::string(av[2]), std::string(av[3]), outfile);
 	infile.close();
+	outfile.close();
 	return 0;
 }
