@@ -7,7 +7,7 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = fixed
+NAME = fixedMore
 
 # Source Files
 SRC_DIR 	= src
