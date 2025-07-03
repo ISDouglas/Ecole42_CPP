@@ -1,6 +1,6 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
-#include <iostream>
+# include <iostream>
 
 class Fixed{
 	private:
@@ -9,7 +9,7 @@ class Fixed{
 	public:
 		Fixed();                    // default constructor
 		Fixed(const	int	intValue);  // constructor with parameter integer
-		Fixed(const	float floatValue);  // constructor with parameter integer
+		Fixed(const	float floatValue);  // constructor with parameter float
 		Fixed(const Fixed& aFixed); // copy constructor
 		Fixed &operator=(const Fixed &other);
 		// destructor
