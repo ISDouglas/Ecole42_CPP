@@ -11,4 +11,7 @@ int main()
 	rabbit.attack("enemy");
 	rabbit.takeDamage(10);
 	rabbit.beRepaired(1);
+	rabbit.takeDamage(2);
+	rabbit.takeDamage(2);
+	return 0;
 }

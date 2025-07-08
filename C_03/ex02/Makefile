@@ -7,13 +7,14 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = claptrap
+NAME = fragtrap
 
 # Source Files
 SRC_DIR 	= src
 SRC     	= \
 	$(SRC_DIR)/main.cpp  \
-	$(SRC_DIR)/ClapTrap.cpp
+	$(SRC_DIR)/ClapTrap.cpp \
+	$(SRC_DIR)/ScavTrap.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)

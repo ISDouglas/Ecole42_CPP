@@ -1,7 +1,7 @@
 # include "../includes/ClapTrap.hpp"
 # include <iostream>
 
-//--------------------- Constructors and Destructor ---------------------//
+//--------------------- Constructor and Destructor ---------------------//
 ClapTrap::ClapTrap()
 {
 	this->_name = "Default_ClapTrap";
