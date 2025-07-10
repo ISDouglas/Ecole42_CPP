@@ -11,7 +11,7 @@ ClapTrap::ClapTrap()
 	std::cout << getType() << " " << this->_name << " is created." << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string name)
+ClapTrap::ClapTrap(const std::string& name)
 {
 	this->_name = name;
 	setHitPoints(10);
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(const ClapTrap& aClapTrap)
 	setHitPoints(aClapTrap.getHitPoints());
 	setEnergyPoints(aClapTrap.getEnergyPoints());
 	setAttackDamage(aClapTrap.getAttackDamage());
-	std::cout << getType() << " " << this->_name << " is created." << std::endl;
+	std::cout << getType() << " " << this->_name << " is copied." << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)

@@ -7,7 +7,7 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = fragtrap
+NAME = diamondtrap
 
 # Source Files
 SRC_DIR 	= src
@@ -15,7 +15,8 @@ SRC     	= \
 	$(SRC_DIR)/main.cpp  \
 	$(SRC_DIR)/ClapTrap.cpp \
 	$(SRC_DIR)/ScavTrap.cpp \
-	$(SRC_DIR)/FragTrap.cpp
+	$(SRC_DIR)/FragTrap.cpp \
+	$(SRC_DIR)/DiamondTrap.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
@@ -23,6 +24,7 @@ OBJS 		= $(SRC:.cpp=.o)
 # Include and Flags
 INCLUDE 	= -Iincludes
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
+# SFLAG       = -Wshadow
 CC 			= c++
 
 # Target
@@ -35,7 +37,14 @@ $(NAME): $(OBJS)
 	@echo "$(YELLOW) 🛠️  waiting for compilation...$(RESET)"
 	@$(CC) $(OBJS) -o $(NAME) $(INCLUDE) $(CFLAGS)
 	@echo "$(GREEN) 🤖  Compiled successful ✴️  $(NAME) ✴️$(RESET)"
-	
+
+# shadow:
+# 	make fclean
+# 	@echo "$(YELLOW) 🛠️  waiting for compilation...$(RESET)"
+# 	@$(CC) $(OBJS) -o $(NAME) $(INCLUDE) $(CFLAGS)
+# 	@echo "$(GREEN) 🤖  Compiled successful ✴️  $(NAME) ✴️$(RESET)"
+
+
 # Clean
 clean:
 	@$(RM) $(OBJS)

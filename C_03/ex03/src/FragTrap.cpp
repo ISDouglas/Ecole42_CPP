@@ -2,7 +2,7 @@
 # include <iostream>
 
 //---------------------  Constructors and Destructor  ---------------------//
-FragTrap::FragTrap(): ClapTrap("Default_ScavTrap")
+FragTrap::FragTrap()//: ClapTrap("Default_ScavTrap")
 {
 	setHitPoints(100);
 	setEnergyPoints(100);
@@ -10,28 +10,33 @@ FragTrap::FragTrap(): ClapTrap("Default_ScavTrap")
 	std::cout << getType() << " " << getName() << " is created." << std::endl;
 }
 
-FragTrap::FragTrap(const std::string name): ClapTrap(name)
+FragTrap::FragTrap(const std::string& name)//: ClapTrap(name)
 {
+	setName(name);
 	setHitPoints(100);
 	setEnergyPoints(100);
 	setAttackDamage(30);
 	std::cout << getType() << " " << getName() << " is created." << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& aFragTrap): ClapTrap(aFragTrap.getName())
+FragTrap::FragTrap(const FragTrap& aFragTrap)//: ClapTrap(aFragTrap.getName())
 {
+	this->setName(aFragTrap.getName());
 	this->setHitPoints(aFragTrap.getHitPoints());
 	this->setEnergyPoints(aFragTrap.getEnergyPoints());
 	this->setAttackDamage(aFragTrap.getAttackDamage());
-	std::cout << getType() << " " << getName() << " is created." << std::endl;
+	std::cout << getType() << " " << getName() << " is copied." << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap& other)
 {
-	this->setName(other.getName());
-	this->setHitPoints(other.getHitPoints());
-	this->setEnergyPoints(other.getEnergyPoints());
-	this->setAttackDamage(other.getAttackDamage());
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHitPoints(other.getHitPoints());
+		this->setEnergyPoints(other.getEnergyPoints());
+		this->setAttackDamage(other.getAttackDamage());
+	}
 	std::cout << getType() << " " << getName() << " is created." << std::endl;
 	return *this;
 }

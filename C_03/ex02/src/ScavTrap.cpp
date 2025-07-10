@@ -1,7 +1,14 @@
 # include "../includes/ScavTrap.hpp"
 # include <iostream>
 
-//---------------------  Constructor and Destructor  ---------------------//
+//---------------------  Constructors and Destructor  ---------------------//
+ScavTrap::ScavTrap(): ClapTrap("Default_ScavTrap")
+{
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(20);
+	std::cout << getType() << " " << getName() << " is created." << std::endl;
+}
 ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 {
 	setHitPoints(100);
@@ -10,31 +17,49 @@ ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 	std::cout << getType() << " " << getName() << " is created." << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap& aScavTrap): ClapTrap(aScavTrap.getName())
+{
+	this->setHitPoints(aScavTrap.getHitPoints());
+	this->setEnergyPoints(aScavTrap.getEnergyPoints());
+	this->setAttackDamage(aScavTrap.getAttackDamage());
+	std::cout << getType() << " " << getName() << " is created." << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap& other)
+{
+	this->setName(other.getName());
+	this->setHitPoints(other.getHitPoints());
+	this->setEnergyPoints(other.getEnergyPoints());
+	this->setAttackDamage(other.getAttackDamage());
+	std::cout << getType() << " " << getName() << " is created." << std::endl;
+	return *this;
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << getType() << " " << getName() << " is destroyed." << std::endl;
 }
 
 //---------------------  Rewrite  functions ---------------------//
-const std::string ScavTrap::getType() const
+std::string ScavTrap::getType() const
 {
 	return "ScavTrap";
 }
 
 void ScavTrap::attack(const std::string& target)
 {
-	int p = getEnergyPoints();
-	if (p > 0 && getHitPoints() > 0)
+	int p = this->getEnergyPoints();
+	if (p > 0 && this->getHitPoints() > 0)
 	{
-		setEnergyPoints(p--);
-		std::cout << getType() << " " << getName() << " attacks " << target
-		<< ", causing " << getAttackDamage() << " points of damage!" << std::endl;
+		this->setEnergyPoints(p - 1);
+		std::cout << this->getType() << " " << this->getName() << " attacks " << target
+		          << ", causing " << this->getAttackDamage() << " points of damage!" << std::endl;
 	}
 	else
 	{
-		std::cout << getType() << " " << getName()
-		<< " cannot attack. No energy or hit points left!"
-		<< std::endl;
+		std::cout << this->getType() << " " << this->getName()
+		          << " cannot attack. No energy or hit points left!"
+		          << std::endl;
 	}
 }
 //---------------------  Member function  ---------------------//

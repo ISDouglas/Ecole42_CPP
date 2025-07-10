@@ -21,7 +21,7 @@ class ClapTrap {
 		int getAttackDamage() const;
 	public:
 		ClapTrap();                                // -1-default constructor 
-		ClapTrap(const std::string name);          // constructor with parameter
+		ClapTrap(const std::string& name);         // constructor with parameter
 		ClapTrap(const ClapTrap& aClapTrap);       // -2-copy constructor
 		ClapTrap &operator=(const ClapTrap& other);// -3-overload of the assignment operator 
 		~ClapTrap();                               // -4-destructor

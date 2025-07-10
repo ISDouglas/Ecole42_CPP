@@ -1,7 +1,7 @@
 # include "../includes/ClapTrap.hpp"
 # include <iostream>
 
-//--------------------- Constructor and Destructor ---------------------//
+//--------------------- Constructors and Destructor ---------------------//
 ClapTrap::ClapTrap()
 {
 	this->_name = "Default_ClapTrap";
@@ -48,6 +48,11 @@ ClapTrap::~ClapTrap()
 }
 
 //---------------------    Setters and Getters    ---------------------//
+void ClapTrap::setName(const std::string name)
+{
+	this->_name = name;
+}
+
 void ClapTrap::setHitPoints(int p)
 {
 	if (p < 0)
@@ -68,27 +73,27 @@ void ClapTrap::setAttackDamage(int p)
 	this->_attackDamage = p;
 }
 
-const std::string ClapTrap::getName() const
+std::string ClapTrap::getName() const
 {
 	return this->_name;
 }
 
-const std::string ClapTrap::getType() const
+std::string ClapTrap::getType() const
 {
 	return "ClapTrap";
 }
 
-const int ClapTrap::getHitPoints() const
+int ClapTrap::getHitPoints() const
 {
 	return this->_hitPoints;
 }
 
-const int ClapTrap::getEnergyPoints() const
+int ClapTrap::getEnergyPoints() const
 {
 	return this->_energyPoints;
 }
 
-const int ClapTrap::getAttackDamage() const
+int ClapTrap::getAttackDamage() const
 {
 	return this->_attackDamage;
 }
