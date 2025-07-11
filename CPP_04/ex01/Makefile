@@ -52,3 +52,5 @@ re: fclean all
 bonus: re
 
 .PHONY: all clean fclean re
+
+# valgrind --leak-check=full ./a.out

@@ -8,8 +8,12 @@
 int main()
 {
 	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const Animal* j = new Dog("dog1");
+	const Animal* i = new Cat("cat1");
+	const Animal* a = new Cat(*(static_cast<const Cat*>(i)));
+	const Animal* b = j;
+	Dog* k = new Dog("dog-dog");
+	const Dog c(*k);
 
 	std::cout << std::endl;
 	std::cout << j->getType() << " sound:" << std::endl;
@@ -20,9 +24,22 @@ int main()
 	meta->makeSound(); // animal sound
 	std::cout << std::endl;
 
+	std::cout << a->getType() << " sound:" << std::endl;
+	a->makeSound(); // cat sound
+	std::cout << b->getType() << " sound:" << std::endl;
+	b->makeSound(); // dog sound
+	std::cout << std::endl;
+	std::cout << k->getType() << " sound:" << std::endl;
+	k->makeSound(); // dog sound
+	std::cout << c.getType() << " sound:" << std::endl;
+	c.makeSound(); // dog sound
+	std::cout << std::endl;
+
 	delete meta;
 	delete j;
 	delete i;
+	delete a;
+	delete k;
 
 	std::cout << "\n=== Wrong Polymorphism (no virtual) ===" << std::endl;
 	const WrongAnimal* wmeta = new WrongAnimal();

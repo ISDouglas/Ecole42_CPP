@@ -2,7 +2,7 @@
 #include <iostream>
 
 WrongCat::WrongCat() {
-	_type = "WrongCat";
+	this->type = "WrongCat";
 	std::cout << "WrongCat created." << std::endl;
 }
 

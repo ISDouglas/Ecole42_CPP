@@ -4,7 +4,7 @@
 
 class Animal {
 	protected:
-		std::string _type;
+		std::string type;
 	public:
 		Animal();                                  // -1-default constructor
 		Animal(const std::string& typeName);       // constructor with parameter

@@ -15,22 +15,22 @@ Dog::Dog(const std::string& typeName): Animal(typeName)
 
 Dog::Dog(const Dog& other): Animal(other)
 {
-	std::cout << "Dog(type: " << this->_type << ") copied." << std::endl;
+	std::cout << "Dog(type: " << this->type << ") copied." << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
 	if (this != &other)
 	{
-		this->_type = other._type;
+		this->type = other.type;
 	}
-	std::cout << "Dog(type: " << this->_type << ") assigned." << std::endl;
+	std::cout << "Dog(type: " << this->type << ") assigned." << std::endl;
 	return *this;
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog(type: " << this->_type << ") destroyed." << std::endl;
+	std::cout << "Dog(type: " << this->type << ") destroyed." << std::endl;
 }
 
 //---------------------  Member function  ---------------------//

@@ -15,26 +15,26 @@ Cat::Cat(const std::string& typeName): Animal(typeName), _brain(new Brain)
 
 Cat::Cat(const Cat& other): Animal(other), _brain(new Brain(*other._brain))
 {
-	std::cout << "Cat(type: " << this->_type << ") copied." << std::endl;
+	std::cout << "Cat(type: " << this->type << ") copied." << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
 	if (this != &other)
 	{
-		this->_type = other._type;
+		this->type = other.type;
 		Brain* new_brain = new Brain(*other._brain); //Use deep copy, not shallow copy
 		delete _brain;
 		_brain = new_brain;
 	}
-	std::cout << "Cat(type: " << this->_type << ") assigned." << std::endl;
+	std::cout << "Cat(type: " << this->type << ") assigned." << std::endl;
 	return *this;
 }
 
 Cat::~Cat()
 {
 	delete _brain;
-	std::cout << "Cat(type: " << this->_type << ") destroyed." << std::endl;
+	std::cout << "Cat(type: " << this->type << ") destroyed." << std::endl;
 }
 
 //---------------------  Member functions  ---------------------//

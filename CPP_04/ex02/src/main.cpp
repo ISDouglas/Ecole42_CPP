@@ -9,9 +9,9 @@ int main()
 	Animal* animals[size];
 
 	for (int i = 0; i < size / 2; ++i)
-		animals[i] = new Dog();
+		animals[i] = new Dog("dog-");
 	for (int i = size / 2; i < size; ++i)
-		animals[i] = new Cat();
+		animals[i] = new Cat("cat-");
 
 	std::cout << std::endl;
 	for (int i = 0; i < size; ++i)
@@ -22,15 +22,15 @@ int main()
 	std::cout << std::endl;
 
 	std::cout << "Test DEEP copy:" << std::endl;
-	Dog* Dog3 = dynamic_cast<Dog*>(animals[1]); 
-	if (Dog3) 
+	Dog* Dog2 = dynamic_cast<Dog*>(animals[1]);  // safe
+	if (Dog2) 
 	{
 		std::cout << "-copy 2nd dog to a new dog: dogCopy" << std::endl;
-		Dog3->getBrain()->setIdea(0, "Original idea");
-		Dog dogCopy = *Dog3;
+		Dog2->getBrain()->setIdea(0, "Original idea");
+		Dog dogCopy = *Dog2;
 		dogCopy.getBrain()->setIdea(0, "Changed in copy");
-		std::cout << "   Original idea: " << Dog3->getBrain()->getIdea(0)
-					<< "   adresse: " << Dog3->getBrain() << std::endl;
+		std::cout << "   Original idea: " << Dog2->getBrain()->getIdea(0)
+					<< "   adresse: " << Dog2->getBrain() << std::endl;
 		std::cout << "   Copy idea:     " << dogCopy.getBrain()->getIdea(0)
 					<< " adresse: " << dogCopy.getBrain() << std::endl;
 	}
@@ -47,9 +47,29 @@ int main()
 	std::cout << "Dog2 idea: " << dog2.getBrain()->getIdea(0)
 				<< "   adresse: " << dog2.getBrain() << std::endl;
 
+	std::cout << "\nTest DEEP copy for Cat:" << std::endl;
+	Cat* cat1 = new Cat("catty");
+	cat1->getBrain()->setIdea(0, "Cat original");
+	Cat catCopy = *cat1;
+	catCopy.getBrain()->setIdea(0, "Cat changed");
+	std::cout << "Original: " << cat1->getBrain()->getIdea(0) << std::endl;
+	std::cout << "Copy:     " << catCopy.getBrain()->getIdea(0) << std::endl;
+	delete cat1;
 	std::cout << std::endl;
 	for (int i = 0; i < size; i++)
 		delete animals[i];
+
+/* 	try {
+		std::cout << " -------- Test valid annimal --------" << std::endl;
+
+		Animal* dogTest = new Dog();
+		delete dogTest;
+
+		std::cout << " -------- Test non - valid annimal --------" << std::endl;
+		Animal* impossible = new Animal();
+		delete impossible;
+	}
+	catch (...) {} */
 
 	return 0;
 }

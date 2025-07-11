@@ -4,7 +4,7 @@
 
 class Brain {
 	private:
-		std::string _ideas[100];
+		std::string ideas[100];
 	public:
 		Brain();                               // -1-default constructor
 		Brain(const Brain& other);             // -2-copy constructor
