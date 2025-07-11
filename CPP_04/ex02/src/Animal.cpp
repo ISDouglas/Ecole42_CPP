@@ -33,7 +33,7 @@ Animal::~Animal()
 	std::cout << "Animal(type: " << this->_type << ") destroyed." << std::endl;
 }
 
-//---------------------  Member function  ---------------------//
+//---------------------  Member functions  ---------------------//
 std::string Animal::getType() const
 {
 	return _type;

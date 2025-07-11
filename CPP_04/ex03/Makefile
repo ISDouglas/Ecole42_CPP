@@ -7,7 +7,7 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = animal
+NAME = pure_virtual
 
 # Source Files
 SRC_DIR 	= src
@@ -16,8 +16,7 @@ SRC     	= \
 	$(SRC_DIR)/Animal.cpp \
 	$(SRC_DIR)/Cat.cpp \
 	$(SRC_DIR)/Dog.cpp \
-	$(SRC_DIR)/WrongCat.cpp \
-	$(SRC_DIR)/WrongAnimal.cpp
+	$(SRC_DIR)/Brain.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
@@ -25,7 +24,6 @@ OBJS 		= $(SRC:.cpp=.o)
 # Include and Flags
 INCLUDE 	= -Iincludes
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
-# SFLAG       = -Wshadow
 CC 			= c++
 
 # Target

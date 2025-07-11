@@ -10,7 +10,7 @@ class Animal {
 		Animal(const std::string& typeName);       // constructor with parameter
 		Animal(const Animal& other);               // -2-copy constructor
 		Animal &operator=(const Animal &other);    // -3-overload of the assignment operator 
-		virtual ~Animal();                                 // -4-destructor
+		virtual ~Animal();                         // -4-destructor
 		std::string getType() const;
 		virtual void makeSound() const;
 };
