@@ -13,10 +13,7 @@ NAME = bureaucrat
 SRC_DIR 	= src
 SRC     	= \
 	$(SRC_DIR)/main.cpp  \
-	$(SRC_DIR)/ClapTrap.cpp \
-	$(SRC_DIR)/ScavTrap.cpp \
-	$(SRC_DIR)/FragTrap.cpp \
-	$(SRC_DIR)/DiamondTrap.cpp
+	$(SRC_DIR)/Bureaucrat.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
@@ -24,7 +21,6 @@ OBJS 		= $(SRC:.cpp=.o)
 # Include and Flags
 INCLUDE 	= -Iincludes
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
-# SFLAG       = -Wshadow
 CC 			= c++
 
 # Target
