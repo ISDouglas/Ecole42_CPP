@@ -7,10 +7,12 @@
 # define Lowest 150
 # define Highest 1
 
+class Form;
+
 class Bureaucrat {
     private:
         std::string _name;
-        int _grade;
+        int         _grade;
     public:
         Bureaucrat();
         Bureaucrat(const std::string name, int grade);
@@ -20,15 +22,18 @@ class Bureaucrat {
         const std::string getName() const;
         int getGrade() const;
         void increment(const int nb);
-        void decrement(const int nb);        
-    class GradeTooHighException: public std::exception {
-        public:
-            const char *what() const throw() {return "Grade too high!";};
-    };
-    class GradeTooLowException: public std::exception {
-        public:
-            const char *what() const throw() {return "Grade too low!";};
-    };
+        void decrement(const int nb); 
+        
+        void signForm(Form &aForm);
+
+		class GradeTooHighException: public std::exception {
+			public:
+				const char *what() const throw() {return "Grade too high!";};
+		};
+		class GradeTooLowException: public std::exception {
+			public:
+				const char *what() const throw() {return "Grade too low!";};
+		};
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other);
