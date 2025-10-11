@@ -2,13 +2,10 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), _target("default")
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("shrubbery creation", 145, 137), _target("default")
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("ShrubberyCreationForm", 145, 137), _target(target)
-{}
-
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name, std::string target): AForm(name, 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("shrubbery creation", 145, 137), _target(target)
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &other): AForm(other), _target(other._target)

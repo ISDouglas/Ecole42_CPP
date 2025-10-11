@@ -29,7 +29,7 @@ Form &Form::operator=(const Form &other)
 Form::~Form()
 {}
 
-std::string Form::getName() const
+const std::string &Form::getName() const
 {
 	return _name;
 }
@@ -65,6 +65,9 @@ void Form::beSigned(Bureaucrat &aBureaucrat)
 	else
 		throw (GradeTooLowException());
 }
+
+const char *Form::GradeTooHighException::what() const throw() {return "Grade too high";}
+const char *Form::GradeTooLowException::what() const throw() {return "Grade too low";}
 
 std::ostream &operator<<(std::ostream &out, const Form &other)
 {

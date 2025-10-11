@@ -19,7 +19,7 @@ class Form {
 		Form &operator=(const Form &other);
 		~Form();
 
-		std::string getName() const;
+		const std::string &getName() const;
 		bool getSigned() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
@@ -28,11 +28,11 @@ class Form {
 
 		class GradeTooHighException: public std::exception{
 			public:
-				const char *what() const throw() {return "Grade too high";};
+				const char *what() const throw();
 		};
 		class GradeTooLowException: public std::exception {
 			public:
-				const char *what() const throw() {return "Grade too low";};
+				const char *what() const throw();
 		};
 };
 

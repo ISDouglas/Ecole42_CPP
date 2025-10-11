@@ -8,8 +8,7 @@ class PresidentialPardonForm: public AForm {
 		std::string	_target;
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(std::string name, std::string target);
+		PresidentialPardonForm(std::string target);;
 		PresidentialPardonForm(PresidentialPardonForm &other);
 		PresidentialPardonForm &operator=(PresidentialPardonForm &other);
 		virtual ~PresidentialPardonForm();

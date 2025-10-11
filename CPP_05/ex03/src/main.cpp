@@ -88,9 +88,9 @@ int main()
         std::cout << b2 << std::endl;
 
         std::cout << "\n=== Form creation ===" << std::endl;
-        ShrubberyCreationForm f1("Planting_form_1","home");
-        RobotomyRequestForm f2("Robotomy_form_1", "Bender");
-        PresidentialPardonForm f3("Pardon_form_1", "Arthur");
+        ShrubberyCreationForm f1("home");
+        RobotomyRequestForm f2("Bender");
+        PresidentialPardonForm f3("Arthur");
         std::cout << f1 << std::endl;
         std::cout << f2 << std::endl;
         std::cout << f3 << std::endl;

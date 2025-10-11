@@ -2,13 +2,10 @@
 
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("PresidentialPardonForm", 25, 5), _target("default")
+PresidentialPardonForm::PresidentialPardonForm(): AForm("presidential pardon", 25, 5), _target("default")
 {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("PresidentialPardonForm", 25, 5), _target(target)
-{}
-
-PresidentialPardonForm::PresidentialPardonForm(std::string name, std::string target): AForm(name, 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("presidential pardon", 25, 5), _target(target)
 {}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &other): AForm(other), _target(other._target)

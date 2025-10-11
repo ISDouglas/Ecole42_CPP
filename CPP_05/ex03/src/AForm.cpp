@@ -29,7 +29,7 @@ AForm &AForm::operator=(const AForm &other)
 AForm::~AForm()
 {}
 
-std::string AForm::getName() const {	return _name; }
+const std::string &AForm::getName() const {	return _name; }
 bool AForm::getSigned() const {	return _signed; }
 int AForm::getSignGrade() const {	return _sign_grade; }
 int AForm::getExecGrade() const {	return _exec_grade; }
@@ -58,6 +58,10 @@ void AForm::checkExecutability(const Bureaucrat &executor) const
 	if (this->_exec_grade < executor.getGrade())
 		throw (GradeTooLowException());
 }
+
+const char *AForm::GradeTooHighException::what() const throw() {return "Grade too high";}
+const char *AForm::GradeTooLowException::what() const throw() {return "Grade too low";}
+const char *AForm::FormNotSignedException::what() const throw() {return "Form not signed"};
 
 std::ostream &operator<<(std::ostream &out, const AForm &other)
 {
