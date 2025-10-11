@@ -1,14 +1,14 @@
 #include "../includes/Bureaucrat.hpp"
 # include "../includes/Form.hpp"
 
-Bureaucrat::Bureaucrat():_name(""), _grade(Lowest)
+Bureaucrat::Bureaucrat():_name("default"), _grade(LOWEST)
 {}
 
-Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name)
 {
-    if (grade > Lowest)
+    if (grade > LOWEST)
         throw GradeTooLowException();
-    if (grade < Highest)
+    if (grade < HIGHEST)
         throw GradeTooHighException();
     this->_grade = grade;
 }
@@ -20,7 +20,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
     if (this != &other)
     {
-        this->_name = other._name;
         this->_grade = other._grade;
     }
     return *this;
@@ -40,18 +39,31 @@ int Bureaucrat::getGrade() const
 }
 
 
-void Bureaucrat::increment(const int nb)
+void Bureaucrat::increment()
 {
-    if (this->_grade - nb < Highest)
+    if (this->_grade - 1 < HIGHEST)
         throw(GradeTooHighException());
-    this->_grade -= nb;
+    this->_grade--;
 }
 
-void Bureaucrat::decrement(const int nb)
+void Bureaucrat::decrement()
 {
-    if (this->_grade + nb > Lowest)
+    if (this->_grade + 1 > LOWEST)
         throw GradeTooLowException();
-    this->_grade += nb;
+    this->_grade++;
+}
+
+void Bureaucrat::signForm(Form &aForm)
+{
+    try {
+        aForm.beSigned(*this);
+        std::cout << this->_name << " signed " << aForm.getName() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << this->_name << " couldn't sign " <<
+        aForm.getName() << " because " << e.what() << "." << std::endl;
+    }
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)

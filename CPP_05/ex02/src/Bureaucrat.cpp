@@ -1,4 +1,5 @@
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/AForm.hpp"
 
 Bureaucrat::Bureaucrat():_name("default"), _grade(LOWEST)
 {}
@@ -50,6 +51,19 @@ void Bureaucrat::decrement()
     if (this->_grade + 1 > LOWEST)
         throw GradeTooLowException();
     this->_grade++;
+}
+
+void Bureaucrat::signForm(AForm &aForm)
+{
+    try {
+        aForm.beSigned(*this);
+        std::cout << this->_name << " signed " << aForm.getName() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << this->_name << " couldn't sign " <<
+        aForm.getName() << " because " << e.what() << "." << std::endl;
+    }
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)

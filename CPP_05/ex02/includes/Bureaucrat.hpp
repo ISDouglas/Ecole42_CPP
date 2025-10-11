@@ -7,7 +7,7 @@
 # define LOWEST 150
 # define HIGHEST 1
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -24,7 +24,7 @@ class Bureaucrat {
         void increment();
         void decrement(); 
         
-        void signForm(Form &aForm);
+        void signForm(AForm &aForm);
 
 		class GradeTooHighException: public std::exception {
 			public:

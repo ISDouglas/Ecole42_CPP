@@ -7,14 +7,17 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = form
+NAME = aform
 
 # Source Files
 SRC_DIR 	= src
 SRC     	= \
 	$(SRC_DIR)/main.cpp  \
 	$(SRC_DIR)/Bureaucrat.cpp \
-	$(SRC_DIR)/Form.cpp
+	$(SRC_DIR)/AForm.cpp \
+	$(SRC_DIR)/ShrubberyCreationForm.cpp \
+	$(SRC_DIR)/RobotomyRequestForm.cpp \
+	$(SRC_DIR)/PresidentialPardonForm.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)

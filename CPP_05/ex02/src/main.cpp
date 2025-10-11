@@ -72,4 +72,6 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+
+	std::cout << "\n-----   -----ex02: AForm-----   -----" << std::endl;
 }
