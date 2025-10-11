@@ -7,6 +7,7 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/Intern.hpp"
 
 void printTreeFile(const std::string &filename)
 {
@@ -122,5 +123,22 @@ int main()
         std::cerr << "❌ Exception caught: " << e.what() << std::endl;
     }
 
+	std::cout << "\n-----   -----ex03: Intern-----   -----" << std::endl;
+	Intern someRandomIntern;
+	AForm* rrf;
+
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	if (rrf)
+	{
+		Bureaucrat bob("Bob", 40);
+		std::cout << bob << std::endl;
+		bob.signForm(*rrf);
+		bob.executeForm(*rrf);
+		delete rrf;
+	}
+
+	std::cout << std::endl;
+	someRandomIntern.makeForm("coffee request", "Bob"); // Unknown form
+		
 	return 0;
 }
