@@ -2,6 +2,11 @@
 # define SCALARCONVERTER_HPP
 
 # include <string>
+# include <iostream>
+# include <cmath>
+# include <limits>
+# include <iomanip>
+# include <cstdlib>
 
 class ScalarConverter {
 	private:
@@ -13,7 +18,7 @@ class ScalarConverter {
 		//inner tool functions
 		static int _getType(const std::string &str);
 		static void _printPseudo(const std::string &str);
-		static void _printDouble(double value);
+		static void _printConvert(double d);
 		static void _convertToDouble(const std::string &value, int type);
 	public:
 		static void convert(const std::string value);

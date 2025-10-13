@@ -1,5 +1,4 @@
 #include "../includes/ScalarConverter.hpp"
-#include <iostream>
 
 enum LiteralType {T_INT, T_CHAR, T_FLOAT, T_DOUBLE, T_PSEUDO, T_INVALID};
 
@@ -72,13 +71,49 @@ void ScalarConverter::_printPseudo(const std::string &str)
 	}
 }
 
-void ScalarConverter::_printDouble(double value)
-{}
+void ScalarConverter::_printConvert(double d)
+{
+	if (d < 0 || d > 127 || std::isnan(d))
+		std::cout << "char: impossible" << std::endl;	
+	else if (d < 32 || d == 127)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+	
+	if (d < std::numeric_limits<int>::min() ||
+		d > std::numeric_limits<int>::max() ||
+		d == std::isnan(d))
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+	
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(d) << "f"<< std::endl;
+	std::cout << "double: " << static_cast<double>(d) << std::endl;	
+}
 
 void ScalarConverter::_convertToDouble(const std::string &value, int type)
 {
 	double d = 0.0;
 
+	switch (type)
+	{
+		case T_CHAR:
+			d = static_cast<double>(value[0]);
+			break ;
+		case T_INT:
+			d = static_cast<double>(std::atoi(value.c_str()));
+			break ;
+		case T_FLOAT:
+			d = static_cast<double>(std::strtof(value.c_str(), NULL));
+			break ;
+		case T_DOUBLE:
+			d = std::strtod(value.c_str(), NULL);
+			break ;
+		default:
+			break ;
+	}
+	_printConvert(d);
 }
 
 void ScalarConverter::convert(const std::string value)

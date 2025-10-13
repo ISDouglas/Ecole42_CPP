@@ -7,13 +7,13 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = convert
+NAME = serializer
 
 # Source Files
 SRC_DIR 	= src
 SRC     	= \
 	$(SRC_DIR)/main.cpp  \
-	$(SRC_DIR)/ScalarConverter.cpp
+	$(SRC_DIR)/Serializer.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
