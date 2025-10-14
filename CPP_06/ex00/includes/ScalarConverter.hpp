@@ -7,6 +7,7 @@
 # include <limits>
 # include <iomanip>
 # include <cstdlib>
+# include <cerrno>
 
 class ScalarConverter {
 	private:
