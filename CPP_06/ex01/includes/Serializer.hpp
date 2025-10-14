@@ -3,6 +3,7 @@
 
 # include <stdint.h>
 # include <cstddef>
+# include <iostream>
 
 struct Data{
     int index;
