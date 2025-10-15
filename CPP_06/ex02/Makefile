@@ -12,7 +12,8 @@ NAME = type
 # Source Files
 SRC_DIR 	= src
 SRC     	= \
-	$(SRC_DIR)/main.cpp  
+	$(SRC_DIR)/main.cpp  \
+	$(SRC_DIR)/Base.cpp 
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
