@@ -24,6 +24,8 @@ int ScalarConverter::_getType(const std::string &str)
 	if (str == "-inff" || str == "+inff" || str == "nanf" ||
 		str == "-inf" || str == "+inf" || str == "nan")
 		return T_PSEUDO;
+	if (str.size() == 3 && str[0] == '\'' && str[2] == '\'')
+        return T_CHAR;
 	if (str.size() == 1 && !std::isdigit(str[0]))
 		return T_CHAR;
 	
@@ -71,27 +73,6 @@ void ScalarConverter::_printPseudo(const std::string &str)
 	}
 }
 
-/* void ScalarConverter::_printConvert(double d)
-{
-	if (d < 0 || d > 127 || std::isnan(d))
-		std::cout << "char: impossible" << std::endl;	
-	else if (d < 32 || d == 127)
-		std::cout << "char: Non displayable" << std::endl;
-	else
-		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
-	
-	if (d < std::numeric_limits<int>::min() ||
-		d > std::numeric_limits<int>::max() ||
-		d == std::isnan(d))
-		std::cout << "int: impossible" << std::endl;
-	else
-		std::cout << "int: " << static_cast<int>(d) << std::endl;
-	
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(d) << "f"<< std::endl;
-	std::cout << "double: " << static_cast<double>(d) << std::endl;	
-} */
-
 static void checkPrecision(double d)
 {
     float f = static_cast<float>(d);
@@ -121,7 +102,7 @@ static void checkPrecision(double d)
 
 void ScalarConverter::_printConvert(double d)
 {
-	if (d < 0 || d > 127 || std::isnan(d))
+	if (std::isnan(d) || d < 0 || d > 127)
 		std::cout << "char: impossible" << std::endl;	
 	else if (d < 32 || d == 127)
 		std::cout << "char: Non displayable" << std::endl;
@@ -130,7 +111,7 @@ void ScalarConverter::_printConvert(double d)
 	
 	if (d < std::numeric_limits<int>::min() ||
 		d > std::numeric_limits<int>::max() ||
-		d == std::isnan(d))
+		std::isnan(d))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
@@ -145,17 +126,34 @@ void ScalarConverter::_convertToDouble(const std::string &value, int type)
 	switch (type)
 	{
 		case T_CHAR:
-			d = static_cast<double>(value[0]);
+		{
+			char c;
+			if (value.size() == 3 && value[0] == '\'' && value[2] == '\'')
+				c = value[1];
+			else
+				c = value[0];
+			d = static_cast<double>(c);
 			break ;
+		}
 		case T_INT:
-			d = static_cast<double>(std::atoi(value.c_str()));
+		{
+			char *end;
+			errno = 0;
+			d = static_cast<double>(std::strtol(value.c_str(), &end, 10));
 			break ;
+		}
 		case T_FLOAT:
+		{
+			errno = 0;
 			d = static_cast<double>(std::strtof(value.c_str(), NULL));
 			break ;
+		}
 		case T_DOUBLE:
+		{
+			errno = 0;
 			d = std::strtod(value.c_str(), NULL);
 			break ;
+		}
 		default:
 			break ;
 	}
