@@ -7,12 +7,13 @@ RESET 	= \033[0m
 
 # **************************** #
 
-NAME = easyfind
+NAME = span
 
 # Source Files
 SRC_DIR 	= src
 SRC     	= \
-	$(SRC_DIR)/main.cpp
+	$(SRC_DIR)/main.cpp \
+	$(SRC_DIR)/Span.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
