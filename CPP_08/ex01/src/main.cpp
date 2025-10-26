@@ -3,7 +3,7 @@
 
 void stressTest()
 {
-    std::cout << "\n=== Stress Test (100,000 elements) ===" << std::endl;
+    std::cout << "\n##******** Stress Test (100,000 elements) ********##" << std::endl;
     Span sp(100000);
     std::vector<int> v(100000);
     std::srand(std::time(0));
@@ -13,8 +13,8 @@ void stressTest()
 
     sp.addNumbers(v.begin(), v.end());
     
-    std::cout << "    Shortest Span: " << sp.shortestSpan() << std::endl;
-    std::cout << "    Longest Span: " << sp.longestSpan() << std::endl;
+    std::cout << "           Shortest Span: " << sp.shortestSpan() << std::endl;
+    std::cout << "           Longest Span: " << sp.longestSpan() << std::endl;
 }
 
 int main()
