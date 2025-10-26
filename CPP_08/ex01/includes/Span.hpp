@@ -3,13 +3,14 @@
 # include <stdexcept>
 # include <algorithm>
 # include <limits>
+# include <iostream>
 
 class Span {
     private:
         unsigned int _N;
         std::vector<int> _v;
     public:
-        Span() = delete;
+        Span();
         Span(unsigned int N);
         Span(const Span &other);
         Span &operator=(const Span &other);         
@@ -20,4 +21,5 @@ class Span {
         long long shortestSpan();
         long long longestSpan();
 
+        std::vector<int> getVector() const;
 };

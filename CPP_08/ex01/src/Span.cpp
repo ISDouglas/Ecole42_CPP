@@ -1,5 +1,8 @@
 #include "../includes/Span.hpp"
 
+Span::Span()
+{}
+
 Span::Span(unsigned int N): _N(N)
 {}
 
@@ -21,10 +24,10 @@ Span::~Span()
       
 void Span::addNumber(int n)
 {
-	if (this->_N >= this->_v.size())
-		throw std::runtime_error("Span is already full, can not add anymore");
-	else
+	if (this->_N > this->_v.size())
 		this->_v.push_back(n);
+	else
+		throw std::runtime_error("Span is already full, can not add anymore");
 }	
 
 void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
@@ -61,4 +64,8 @@ long long Span::longestSpan()
 	int max = *std::max_element(_v.begin(), _v.end());
 
 	return static_cast<long long>(max) - static_cast<long long>(min);
+}
+std::vector<int> Span::getVector() const
+{
+	return this->_v;
 }
