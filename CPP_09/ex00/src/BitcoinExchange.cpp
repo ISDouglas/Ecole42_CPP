@@ -24,7 +24,7 @@ void BitcoinExchange::parseCSV(const std::string fileRates)
 {
 	std::ifstream file(fileRates.c_str());
 	if (!file.is_open())
-		throw std::runtime_error("could not open file 0.");
+		throw std::runtime_error("could not open file.");
 	
 	std::string line;
 	std::getline(file, line);

@@ -12,7 +12,7 @@ int main(int ac, char **av)
 
 		std::ifstream input(av[1]);
 		if (!input.is_open())
-			throw std::runtime_error("could not open file 1.");
+			throw std::runtime_error("could not open file.");
 
 		std::string line;
 		std::getline(input, line);
