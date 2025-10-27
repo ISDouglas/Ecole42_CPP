@@ -4,8 +4,12 @@
 # include <map>
 # include <string>
 # include <stdexcept>
+# include <fstream>
+# include <iostream>
+# include <sstream>
+#   include <climits>
 
-//map<string, double>
+//map<string, double>   
 class BitcoinExchange {
     private:
         std::map<std::string, double> _rates;
@@ -18,6 +22,8 @@ class BitcoinExchange {
 
         void parseCSV(const std::string fileRates);
         double getRate(const std::string &date) const;
+        std::string removeSpace(std::string str);
+        int validDateValue(const std::string date, const std::string value);
         void exchangeOutputLine(const std::string line);
 };
 
