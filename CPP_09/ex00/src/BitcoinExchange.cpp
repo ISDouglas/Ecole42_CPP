@@ -77,12 +77,35 @@ int BitcoinExchange::validDateValue(const std::string d, const std::string v)
 
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return 0;
-	for (size_t i = 0; i < date.size(); i++)
+	//how to valid if it is a real exist date, including no 2019-02-29 or no 2019-22-28 etc.
+	// ====== 提取年/月/日 ======
+	int year, month, day;
+	std::istringstream yss(date.substr(0, 4));
+	std::istringstream mss(date.substr(5, 2));
+	std::istringstream dss(date.substr(8, 2));
+	if (!(yss >> year) || !(mss >> month) || !(dss >> day))
 	{
-		if (i == 4 || i == 7) continue ;
-		if (date[i] < '0' || date[i] > '9') return 0;
-		//how to valid if it is a real exist date, including no 2019-02-29 or no 2019-22-28 etc.
+		std::cout << "Error: bad input => " << date << std::endl;
+		return 0;
 	}
+
+	// ====== 验证月份和日期范围 ======
+	if (month < 1 || month > 12)
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
+		return 0;
+	}
+
+	int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		daysInMonth[1] = 29;
+
+	if (day < 1 || day > daysInMonth[month - 1])
+	{
+		std::cout << "Error: bad input => " << date << std::endl;
+		return 0;
+	}
+
 
 	// how to valid if value is an integer, it is a valid integer; like 2147483648 is invalid.
 /* 	int haspoint = 0;
@@ -122,7 +145,7 @@ int BitcoinExchange::validDateValue(const std::string d, const std::string v)
 	if (!hasDot)
 	{
 		// 没有小数点 => 按整数检查范围
-		if (num > INT_MAX)
+		if (num > std::numeric_limits<int>::max())
 		{
 			std::cout << "Error: too large a number." << std::endl;
 			return 0;
@@ -136,7 +159,7 @@ int BitcoinExchange::validDateValue(const std::string d, const std::string v)
 			std::cout << "Error: too large a number." << std::endl;
 			return 0;
 		}
-
+	}
 	return 1;
 }
 

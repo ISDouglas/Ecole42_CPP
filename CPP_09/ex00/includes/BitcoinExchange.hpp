@@ -7,7 +7,7 @@
 # include <fstream>
 # include <iostream>
 # include <sstream>
-#   include <climits>
+# include <limits>
 
 //map<string, double>   
 class BitcoinExchange {
@@ -23,7 +23,7 @@ class BitcoinExchange {
         void parseCSV(const std::string fileRates);
         double getRate(const std::string &date) const;
         std::string removeSpace(std::string str);
-        int validDateValue(const std::string date, const std::string value);
+        int validDateValue(const std::string d, const std::string v);
         void exchangeOutputLine(const std::string line);
 };
 
