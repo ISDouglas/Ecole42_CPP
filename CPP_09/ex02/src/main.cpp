@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	try {
 		PmergeMe nbs;
 		av++;
-		nbs.processInput(av);
+		nbs.processMergeInsert(ac - 1, av);
 	}
 	catch (const std::exception &e) {
 		std::cerr << e.what() << std::endl;
