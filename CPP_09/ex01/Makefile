@@ -13,7 +13,7 @@ NAME = RPN
 SRC_DIR 	= src
 SRC     	= \
 	$(SRC_DIR)/main.cpp \
-	$(SRC_DIR)/BitcoinExchange.cpp
+	$(SRC_DIR)/RPN.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)

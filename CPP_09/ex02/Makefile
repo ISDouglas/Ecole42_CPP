@@ -13,7 +13,7 @@ NAME = PmergeMe
 SRC_DIR 	= src
 SRC     	= \
 	$(SRC_DIR)/main.cpp \
-	$(SRC_DIR)/BitcoinExchange.cpp
+	$(SRC_DIR)/PmergeMe.cpp
 
 # Object Files
 OBJS 		= $(SRC:.cpp=.o)
