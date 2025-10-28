@@ -6,6 +6,7 @@
 # include <iostream>
 # include <ctime>
 # include <string>
+# include <cstdlib>
 
 // Containers applied in ex02: std::vector<int>, std::deque<int>
 class PmergeMe {
@@ -23,8 +24,8 @@ class PmergeMe {
 		void processInputVector(int n, char **av);
 		void processInputDeque(int n, char **av);
 		
-		void sortMergeInsertVector();
-		void sortMergeInsertDeque();
+		void sortMergeInsertVector(std::vector<unsigned int> &vect);
+		void sortMergeInsertDeque(std::deque<unsigned int> &deq);
 		
 		double countTimeVectorInput(int n, char **av);
 		double countTimeVectorSort();
