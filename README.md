@@ -191,5 +191,3 @@ These modules aim to build **strong C++ fundamentals** and prepare students for:
 
 ---
 
-
-直接告诉我你打算**用在哪里**（GitHub / 简历 / LinkedIn）。
